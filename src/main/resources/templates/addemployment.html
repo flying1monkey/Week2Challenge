@@ -7,17 +7,18 @@
 <body>
 <h1>Adding a job</h1>
 
-<form action="#" th:action="@{/addemployment}" th:object="${add}" method="post">
-    <p>Your name: <input type="text" th:field="*{name}"/>
+<form action="#" th:action="@{/addemployment}" th:object="${job}" method="post">
+    <p>*Your name: <input type="text" th:field="*{name}"/>
         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Problem with name</span></p>
     <p>Your email: <input type="text" th:field="*{email}"/>
         <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Problem with email</span></p>
     <p>Company: <input type="text" th:field="*{org}"/>
         <span th:if="${#fields.hasErrors('org')}" th:errors="*{org}">Problem with company</span></p>
-    <p>Start date: <input type="text" th:field="*{startDate}"/>
+    <p>*Start date: <input type="text" th:field="*{startDate}"/>
         <span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">Problem with start date</span></p>
     <p>End date: <input type="text" th:field ="*{endDate}"/>
         <span th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">Problem with end date</span></p>
+    <p>*Your name and start date are required</p>
     <p><input type="submit" value="Submit" /><input type="reset" value="Reset"/></p>
 </form>
 

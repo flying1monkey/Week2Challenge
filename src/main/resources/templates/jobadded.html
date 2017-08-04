@@ -6,6 +6,13 @@
 </head>
 <body>
 <p>Your previous employment was entered successfully.</p>
+<p>Here's your resume!</p>
+<p th:text="${job.name}"/>
+<p th:text="${job.email}"/>
+<p th:text="${job.org}"/>
+<p th:text="'Start date: ' +${job.startDate}"/>
+<p th:text="'End date: ' +${job.endDate}"/>
+<p th:text="'Days employed: ' +${job.daysEmployed}"/>
 <p>What would you like to do?</p>
 <p><a href="/addemployment">Add another job</a></p>
 <p><a href="/viewcv">See entered jobs</a></p>

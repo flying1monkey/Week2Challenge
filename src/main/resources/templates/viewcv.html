@@ -6,7 +6,24 @@
 </head>
 <body>
 <h1>Previously entered jobs</h1>
-
+<table border="2">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Company</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Days employed</th>
+    </tr>
+    <tr th:each="job : ${jobList}" >
+        <td th:text="${job.name}"/>
+        <td th:text="${job.email}"/>
+        <td th:text="${job.org}"/>
+        <td th:text="${job.startDate}"/>
+        <td th:text="${job.endDate}"/>
+        <td th:text="${job.daysEmployed}"/>
+    </tr>
+</table>
 
 <p><a href="/addemployment">Add a job</a></p>
 <p><a href="/starthere">Go back to start page</a></p>

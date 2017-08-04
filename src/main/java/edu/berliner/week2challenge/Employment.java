@@ -1,9 +1,14 @@
 package edu.berliner.week2challenge;
 
-import javax.persistence.*;
-import javax.validation.constraints.Min;
+
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.AUTO;
@@ -12,16 +17,14 @@ import static javax.persistence.GenerationType.AUTO;
 public class Employment
 {
     @Id
-//    @SequenceGenerator(name = "seq", sequenceName = "ORACLE_SEQ")
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotNull @Size(min=2,max=30) String name;
-    @NotNull @Size(min=2, max=30) String email;
-    @NotNull @Size(min=2, max=30) String org;
-    @NotNull Date startDate;
-    @NotNull Date endDate;
-    int daysEmployed;
+    @NotNull @Size(min=1,max=30) String name;
+    @Size(max=30) String email;
+    @Size(max=30) String org;
+    @NotNull LocalDate startDate;
+    LocalDate endDate;
+    long daysEmployed;
 
     public String getName()
     {
@@ -53,33 +56,34 @@ public class Employment
         this.org = org;
     }
 
-    public Date getStartDate()
+    public LocalDate getStartDate()
     {
         return startDate;
     }
 
-    public void setStartDate(Date startDate)
+    public void setStartDate(LocalDate startDate)
     {
         this.startDate = startDate;
     }
 
-    public Date getEndDate()
+    public LocalDate getEndDate()
     {
         return endDate;
     }
 
-    public void setEndDate(Date endDate)
+    public void setEndDate(LocalDate endDate)
     {
         this.endDate = endDate;
     }
 
-    public int getDaysEmployed()
+    public long getDaysEmployed()
     {
         return daysEmployed;
     }
 
-    public void setDaysEmployed(int daysEmployed)
+    public void setDaysEmployed(long daysEmployed)
     {
         this.daysEmployed = daysEmployed;
     }
+
 }
