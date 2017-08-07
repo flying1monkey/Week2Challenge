@@ -1,5 +1,15 @@
 package edu.berliner.week2challenge.controllers;
 
+/*
+ *This program allows a user to input their name, email address, Company, and start and end dates for a job,
+ *and outputs a basic CV, which includes the number of days they worked at the company.
+ *It also allows the user to see all the input they've entered.
+ *
+ *
+ * @author Jesse Berliner
+ */
+
+
 import edu.berliner.week2challenge.Employment;
 import edu.berliner.week2challenge.repositories.JobRepo;
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -10,7 +20,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.time.LocalDate;
 
 @Controller
@@ -19,12 +28,14 @@ public class MainController
     @Autowired
     JobRepo jobs;
 
+    //start page
     @GetMapping("/starthere")
     public String startPage()
     {
         return "starthere";
     }
 
+    //Add job page
     @GetMapping("/addemployment")
     public String addJob(Model model)
     {
@@ -32,6 +43,7 @@ public class MainController
         return "addemployment";
     }
 
+    //add job page after submission
     @PostMapping("/addemployment")//
     public String submitJob(@ModelAttribute("job")Employment job, BindingResult bindingResult)
     {
@@ -53,7 +65,6 @@ public class MainController
         if(job.getEndDate()==null)
 
         {
-            System.out.println("end null!");
             job.setEndDate(LocalDate.now());
         }
         //calculate days employed
@@ -63,6 +74,7 @@ public class MainController
         return "jobadded";
     }
 
+    //cv page-shows a single job
     @GetMapping("/viewcv")
     public String viewcv(Model model)
     {
@@ -70,5 +82,9 @@ public class MainController
         model.addAttribute("jobList", jobList);
         return "viewcv";
     }
+
+
+
+
 
 }
